@@ -30,39 +30,7 @@
         <strong>Example:</strong>
     </p>
 
-{% if interpreter.slug == "js-node" %}
-<pre class="brush: javascript">wordsOrder('hi world im here', ['world', 'here']) == true
-wordsOrder('hi world im here', ['here', 'world']) == false
-wordsOrder('hi world im here', ['world']) == true
-wordsOrder('hi world im here',
- ['world', 'here', 'hi']) == false
-wordsOrder('hi world im here',
- ['world', 'im', 'here']) == true
-wordsOrder('hi world im here',
- ['world', 'hi', 'here']) == false
-wordsOrder('hi world im here', ['world', 'world']) == false
-wordsOrder('hi world im here',
- ['country', 'world']) == false
-wordsOrder('hi world im here', ['wo', 'rld']) == false
-wordsOrder('', ['world', 'here']) == false
-</pre>
-{% else %}
-<pre class="brush: python">words_order('hi world im here', ['world', 'here']) == True
-words_order('hi world im here', ['here', 'world']) == False
-words_order('hi world im here', ['world']) == True
-words_order('hi world im here',
- ['world', 'here', 'hi']) == False
-words_order('hi world im here',
- ['world', 'im', 'here']) == True
-words_order('hi world im here',
- ['world', 'hi', 'here']) == False
-words_order('hi world im here', ['world', 'world']) == False
-words_order('hi world im here',
- ['country', 'world']) == False
-words_order('hi world im here', ['wo', 'rld']) == False
-words_order('', ['world', 'here']) == False
-</pre>
-{% endif %}
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 </div>
 
 
