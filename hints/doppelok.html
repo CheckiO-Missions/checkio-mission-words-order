@@ -1,0 +1,122 @@
+<body data-author="Doppelok">
+<div class="question-answer">
+    <div class="question">
+        I don't know how to start solving this mission
+    </div>
+    <div class="answer">
+        You need to match each word of the string with a word in the words list. If there is one, then remember it,
+        and at the end just compare the words that were taken from the string with the words from the list.
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        I need help to continue the mission
+    </div>
+    <div class="answer">
+        It will be useful for you to read some information about:
+        <a href='https://docs.python.org/3.10/library/stdtypes.html?highlight=index#str.index'>str.index()</a>
+        (<a href='https://www.w3schools.com/python/ref_string_index.asp'>example</a> ),
+        <a href='https://docs.python.org/3.10/library/functions.html?highlight=sorted#sorted'>sorted()</a>
+        (<a href='https://www.w3schools.com/python/ref_func_sorted.asp'>example</a> ), and
+        <a href='https://docs.python.org/3.10/library/stdtypes.html?highlight=str%20split#str.split'>str.split()</a>
+        (<a href='https://www.w3schools.com/python/ref_string_split.asp'>example</a> ).
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Need help!
+    </div>
+    <div class="answer">
+        As an algorithm that will find the necessary words and store them, I suggest using a set generator.
+         It will help us bypass the problem of repeating a word in a line.
+        <pre class="brush: python">
+text = "hi world im here hi world world im here"
+result = {i for i in text.split()}
+print(result)
+
+# output
+{'im', 'hi', 'world', 'here'}
+        </pre>
+        Although all words occur more than once in a string, our result contains one instance of each word.
+         But be careful, the set is not an ordered data type.
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        I'm stuck. I need a little hint.
+    </div>
+    <div class="answer">
+        You can add an if condition inside to the set generator expression. Therefore, only those elements that
+        pass the expression of the if condition will be added to the generator result. In our if condition, we will
+        add a check for occurrence of a word from the string in the list of words.
+        <pre class="brush: python">
+text = "hi world im here hi world world im here"
+words = ["world", "here"]
+result = {i for i in text.split() if i in words}
+print(result)
+
+# output
+{'world', 'here'}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Nothing works. SOS
+    </div>
+    <div class="answer">
+        All we have to do is check whether the words we received by the set generator are in the same order as in the
+        list of words. The sorted() function and the str.index() method will help us. This str.index() method returns
+        the index of the first element that matched the given element in the parentheses. But we will use this method
+        as the value of the "key" argument in the sorted() function. Look carefully =)
+        <pre class="brush: python">
+text = "hi world im here hi world world im here"
+words = ["world", "here"]
+result = {i for i in text.split() if i in words}
+print(sorted(result, key=text.index))
+
+# output
+['world', 'here']
+        </pre>
+        The sorted() function turned our set into a list and sorted it by text.index('world') ... text.index('here').
+         That is, the output is a list with the order of words, as in the specified line. Thus, we solved the problem of unordered set data type.
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        I don't want to give up, help!
+    </div>
+    <div class="answer">
+        All you have to do is wrap all the code in a function expression. And at the output of the function, return
+        the value of the comparison of the sorted list and the list of words.
+        <pre class="brush: python">
+def words_order(text: str, words: list) -> bool:
+    result = {i for i in text.split() if i in words}
+    print(result)
+    return sorted(result, key=text.index) == words
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        I want to be the best of the best PROGRAMMERS!!! SHOW ME MORE SOLUTIONS!!1!!!11!
+    </div>
+    <div class="answer">
+        Okay, okay! That's the spirit!=)
+        Here is an example of a solution through for loops. The logic is very similar to our solution,
+        but instead of the set, we check whether our text_new list contains specific words or not.
+        <pre class="brush: python">
+def words_order(text: str, words: list) -> bool:
+    if len(set(words)) < len(words):
+        return False
+    text_new = []
+    for i in text.split():
+        if i in words and i not in text_new:
+            text_new.append(i)
+    return text_new == words
+        </pre>
+    </div>
+</div>
+
+
+</body>
