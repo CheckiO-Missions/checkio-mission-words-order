@@ -1,121 +1,146 @@
 <body data-author="Doppelok">
 <div class="question-answer">
     <div class="question">
-        Я не знаю, як розпочати вирішення цієї місії
+        <p>
+            Я не знаю, як розпочати вирішення цієї місії.
+        </p>
     </div>
     <div class="answer">
-        Тобі потрібно кожне слово рядка зрівняти зі словом в списку words. Якщо таке є, то запамятати його, а в кінці просто
-        порівняти слова, які були взяті із рядка, зі словами зі списку.
+        <p>
+            Тобі потрібно кожне слово рядка зрівняти зі словом в списку <b class="code">words</b>. Якщо таке є, то запам'ятати його, а в кінці просто порівняти слова, які були взяті із рядка, зі словами зі списку.
+        </p>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        Мені потрібна допомога, щоб продовжити місію
+        <p>
+            Мені потрібна допомога, щоб продовжити місію.
+        </p>
     </div>
     <div class="answer">
-        Тобі буде корисно прочитати трохи інформації про:
-        <a href='https://docs.python.org/3.10/library/stdtypes.html?highlight=index#str.index'>str.index()</a>
-        (<a href='https://www.w3schools.com/python/ref_string_index.asp'>приклад</a> ),
-        <a href='https://docs.python.org/3.10/library/functions.html?highlight=sorted#sorted'>sorted()</a>
-        (<a href='https://www.w3schools.com/python/ref_func_sorted.asp'>приклад</a> ), та
-        <a href='https://docs.python.org/3.10/library/stdtypes.html?highlight=str%20split#str.split'>str.split()</a>
-        (<a href='https://www.w3schools.com/python/ref_string_split.asp'>приклад</a> ).
+        <p>
+            Тобі буде корисно прочитати трохи інформації про: <a target="_blank" href='https://docs.python.org/3.10/library/stdtypes.html?highlight=index#str.index'>str.index()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_string_index.asp'>приклад</a>), <a target="_blank" href='https://docs.python.org/3.10/library/functions.html?highlight=sorted#sorted'>sorted()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_func_sorted.asp'>приклад</a>), та <a target="_blank" href='https://docs.python.org/3.10/library/stdtypes.html?highlight=str%20split#str.split'>str.split()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_string_split.asp'>приклад</a>).
+        </p>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        Потрібна допомога!
+        <p>
+            Потрібна допомога!
+        </p>
     </div>
     <div class="answer">
-        Як алгоритм, який буде знаходити потрібні слова та зберігати їх, пропоную використати генератор множин.
-        Він нам допоможе обійти проблему повторювання слова в рядку.
+        <p>
+            Як алгоритм, який буде знаходити потрібні слова та зберігати їх, пропоную використати генератор множин. Він нам допоможе обійти проблему повторювання слова в рядку.
+        </p>
         <pre class="brush: python">
 text = "hi world im here hi world world im here"
 result = {i for i in text.split()}
 print(result)
-
-# output
-{'im', 'hi', 'world', 'here'}
         </pre>
-        Хоч в рядку всі слова зустрічаються більше одного разу, наш результат містить по одному екземпляру кожного слова.
-        Але уважно, множина це не впорядкований тип даних.
+        <div class="output">
+            <p>Вивід:</p>
+            <pre>
+{'im', 'hi', 'world', 'here'}        
+            </pre>
+        </div>
+        <p>
+            Хоч в рядку всі слова зустрічаються більше одного разу, наш результат містить по одному екземпляру кожного слова. Але уважно, множина це не впорядкований тип даних.
+        </p>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        Я застряг. Мені потрібна маленька підказка.
+        <p>
+            Я застряг. Мені потрібна маленька підказка.
+        </p>
     </div>
     <div class="answer">
-        У середину виразу генератора множин можна додавати умову if. Отже до результату генератора будуть додаватись тільки ті
-        елементи, які пройдуть вираз умови if. В нашу умову if ми додамо перевірку на входження слова з рядка до списку слів.
+        <p>
+            У середину виразу генератора множин можна додавати умову <b class="code">if</b>. Отже до результату генератора будуть додаватись тільки ті елементи, які пройдуть вираз умови <b class="code">if</b>. В нашу умову <b class="code">if</b> ми додамо перевірку на входження слова з рядка до списку слів.
+        </p>
         <pre class="brush: python">
 text = "hi world im here hi world world im here"
 words = ["world", "here"]
 result = {i for i in text.split() if i in words}
 print(result)
-
-# output
-{'world', 'here'}
         </pre>
+        <div class="output">
+            <p>Вивід:</p>
+            <pre>
+{'world', 'here'}        
+            </pre>
+        </div>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        Нічого не працює. SOS
+        <p>
+            Нічого не працює. SOS
+        </p>
     </div>
     <div class="answer">
-        Нам залишилось тільки перевірити чи слова які ми отримали генератором множин стоять в такому ж порядку, як в
-        списку слів. Нам допоможе функція sorted() та метод str.index(). Цей метод str.index() повертає індекс першого елемента,
-        який збігся з заданим елементом у дужках. Але ми використаємо цей метод у якості значення аргументу "key" в функції
-        sorted(). Дивись уважно =)
+        <p>
+            Нам залишилось тільки перевірити чи слова які ми отримали генератором множин стоять в такому ж порядку, як в списку слів. Нам допоможе функція <b class="code">sorted()</b> та метод <b class="code">str.index()</b>. Цей метод <b class="code">str.index()</b> повертає індекс першого елемента, який збігся з заданим елементом у дужках. Але ми використаємо цей метод у якості значення аргументу <b class="code">key</b> в функції <b class="code">sorted()</b>. Дивись уважно =)
+        </p>
         <pre class="brush: python">
 text = "hi world im here hi world world im here"
 words = ["world", "here"]
 result = {i for i in text.split() if i in words}
 print(sorted(result, key=text.index))
-
-# output
-['world', 'here']
         </pre>
-        Функція sorted() перетворила нашу множину на список та відсортувало його по значенню text.index('world') ... text.index('here').
-        Тобто на виході список з порядком слів, як у заданому рядку. Таким чином ми вирішили проблему не впорядкованого типу даних множина.
+        <div class="output">
+            <p>Вивід:</p>
+            <pre>
+['world', 'here']        
+            </pre>
+        </div>
+        <p>
+            Функція <b class="code">sorted()</b> перетворила нашу множину на список та відсортувало його по значенню <b class="code">text.index('world') ... text.index('here')</b>. Тобто на виході список з порядком слів, як у заданому рядку. Таким чином ми вирішили проблему не впорядкованого типу даних множина.
+        </p>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        Не хочу здаватись, допоможи!
+        <p>
+            Не хочу здаватись, допоможи!
+        </p>
     </div>
     <div class="answer">
-        Тобі залишилось весь код завернути у вираз функції. А на виході функції повернути значення порівняння сортованого списку і
-        списку слів.
+        <p>
+            Тобі залишилось весь код завернути у вираз функції. А на виході функції повернути значення порівняння сортованого списку і списку слів.
+        </p>
         <pre class="brush: python">
 def words_order(text: str, words: list) -> bool:
+
     result = {i for i in text.split() if i in words}
-    print(result)
+
     return sorted(result, key=text.index) == words
         </pre>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        Я хочу бути кращим з кращих ПРОГРАМІСТІВ!!! ПОКАЗАЖИ МЕНІ БІЛЬШЕ РІШЕНЬ!!1!!!11!
+        <p>
+            Я хочу бути кращим з кращих ПРОГРАМІСТІВ!!! ПОКАЖИ МЕНІ БІЛЬШЕ РІШЕНЬ!!1!!!11!
+        </p>
     </div>
     <div class="answer">
-        Добре, добре! Оце настрій!=)
-        Ось приклад рішення через цикли for. Логіка дуже схожа до нашого рішення, але замість множини ми виконуємо перевірку на
-        те, чи містить наш список text_new конкретні слова чи ні.
+        <p>
+            Добре, добре! Оце настрій!=) Ось приклад рішення через цикл <b class="code">for</b>  . Логіка дуже схожа до нашого рішення, але замість множини ми виконуємо перевірку на те, чи містить наш список <b class="code">text_new</b> конкретні слова чи ні.
+        </p>
         <pre class="brush: python">
 def words_order(text: str, words: list) -> bool:
+
     if len(set(words)) < len(words):
         return False
     text_new = []
     for i in text.split():
         if i in words and i not in text_new:
             text_new.append(i)
+
     return text_new == words
         </pre>
     </div>
 </div>
-
-
 </body>
