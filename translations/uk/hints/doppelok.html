@@ -110,6 +110,7 @@ print(sorted(result, key=text.index))
         <p>
             Тобі залишилось весь код завернути у вираз функції. А на виході функції повернути значення порівняння сортованого списку і списку слів.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def words_order(text: str, words: list) -> bool:
 
@@ -117,6 +118,7 @@ def words_order(text: str, words: list) -> bool:
 
     return sorted(result, key=text.index) == words
         </pre>
+        </div>
     </div>
 </div>
 <div class="question-answer">
@@ -129,6 +131,7 @@ def words_order(text: str, words: list) -> bool:
         <p>
             Добре, добре! Оце настрій!=) Ось приклад рішення через цикл <b class="code">for</b>  . Логіка дуже схожа до нашого рішення, але замість множини ми виконуємо перевірку на те, чи містить наш список <b class="code">text_new</b> конкретні слова чи ні.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def words_order(text: str, words: list) -> bool:
 
@@ -141,6 +144,7 @@ def words_order(text: str, words: list) -> bool:
 
     return text_new == words
         </pre>
+        </div>
     </div>
 </div>
 </body>
