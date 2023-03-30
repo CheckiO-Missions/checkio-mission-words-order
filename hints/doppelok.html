@@ -110,6 +110,7 @@ print(sorted(result, key=text.index))
         <p>
             All you have to do is wrap all the code in a function expression. And at the output of the function, return the value of the comparison of the sorted list and the list of words.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def words_order(text: str, words: list) -> bool:
 
@@ -117,6 +118,7 @@ def words_order(text: str, words: list) -> bool:
 
     return sorted(result, key=text.index) == words
         </pre>
+        </div>
     </div>
 </div>
 <div class="question-answer">
@@ -129,6 +131,7 @@ def words_order(text: str, words: list) -> bool:
         <p>
             Okay, okay! That's the spirit!=) Here is an example of a solution through <b class="code">for</b> loop. The logic is very similar to our solution, but instead of the set, we check whether our <b class="code">text_new</b> list contains specific words or not.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def words_order(text: str, words: list) -> bool:
 
@@ -141,6 +144,7 @@ def words_order(text: str, words: list) -> bool:
             
     return text_new == words
         </pre>
+        </div>
     </div>
 </div>
 </body>
