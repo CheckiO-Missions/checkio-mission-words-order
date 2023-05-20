@@ -1,21 +1,21 @@
 <!-- Describe task in general -->
 <p>
-    You have a text and a list of words. You need to check if the words in a list appear in the same order as in the given text.
+    You have a text and {% if is_js %}an <span translate="repeat">array</span>{% else %}a <span translate="repeat">list</span>{% endif %} of words. You need to check if the words in {% if is_js %}an <span translate="repeat">array</span>{% else %}a <span translate="repeat">list</span>{% endif %} appear in the same order as in the given text.
 </p>
 <p> Cases you should expect while solving this challenge:</p>
 <ul>
-    <li>a word from the list is not in the text - your function should return <b class="code">{% if is_js %}f{% else %}F{% endif %}alse</b>;</li>
+    <li>a word from the {% if is_js %}<span translate="repeat">array</span>{% else %}<span translate="repeat">list</span>{% endif %} is not in the text - your function should return <b class="code">{% if is_js %}f{% else %}F{% endif %}alse</b>;</li>
     <li>any word can appear more than once in a text - use only the first one;</li>
-    <li>two words in the given list are the same - your function should return <b class="code">{% if is_js %}f{% else %}F{% endif %}alse</b>;</li>
+    <li>two words in the given {% if is_js %}<span translate="repeat">array</span>{% else %}<span translate="repeat">list</span>{% endif %} are the same - your function should return <b class="code">{% if is_js %}f{% else %}F{% endif %}alse</b>;</li>
     <li>the condition is case sensitive, which means <b class="code">'hi'</b> and <b class="code">'Hi'</b> are two different words;</li>
     <li>the text includes only English letters and spaces.</li>
 </ul>
 <!-- Explain input and output values -->
 <p>
-    <strong>Input:</strong> Two arguments. The first one is a given text, the second is a list of words.
+    <strong>Input:</strong> Two arguments. The first one is a given text, the second is {% if is_js %}an <span translate="repeat">array</span>{% else %}a <span translate="repeat">list</span>{% endif %} of words.
 </p>
 <p>
-    <strong>Output:</strong> A bool.
+    <strong>Output:</strong> A {% if is_js %}<span translate="repeat">boolean</span>{% else %}<span translate="repeat">bool</span>{% endif %}.
 </p>
 <!-- Give some usage examples -->
 <div class="for_info_only">
