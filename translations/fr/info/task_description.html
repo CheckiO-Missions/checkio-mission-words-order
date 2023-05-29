@@ -1,0 +1,28 @@
+<!-- Describe task in general -->
+<p>
+    Vous avez un texte et {% if is_js %}un <span>tableau</span> <span>(array)</span>{% else %} une <span>liste</span> <span>(list)</span>{% endif %} de mots. Vous devez vérifier si les mots dans {% if is_js %}un <span>tableau</span> <span>(array)</span>{% else %} une <span>liste</span> <span>(list)</span>{% endif %} apparaissent dans le même ordre que dans le texte donné.
+</p>
+<p> Voici les cas auxquels vous devez vous attendre pour résoudre ce défi:</p>
+<ul>
+    <li>un mot du<span>tableau</span> {% if is_js %}<span></span> <span>(array)</span><span> </span>{% else %} <span>liste</span> <span>(list)</span>{% endif %} n'est pas dans le texte - votre fonction doit retourner <b class="code">{% if is_js %}f{% else %}F{% endif %}alse</b>;</li>
+    <li>un mot peut apparaître plus d'une fois dans un texte - n'utilisez que le premier;</li>
+    <li>deux mots du<span>tableau</span> {% if is_js %}<span></span> <span>(array)</span><span> </span>{% else %} <span>liste</span> <span>(list)</span>{% endif %} sont identiques - votre fonction doit retourner <b class="code">{% if is_js %}f{% else %}F{% endif %}alse</b>;</li>
+    <li>la condition est sensible à la casse, ce qui signifie que <b class="code">'hi'</b> et <b class="code">'Hi'</b> sont deux mots différents;</li>
+    <li>le texte ne comprend que des lettres et des espaces en anglais.</li>
+</ul>
+<!-- Explain input and output values -->
+<p>
+   <strong>Entrée:</strong> Deux arguments. Le premier est un texte donné, le second est {% if is_js %}un <span>tableau</span> <span>(array)</span>{% else %} une <span>liste</span> <span>(list)</span>{% endif %} de mots.
+</p>
+<p>
+   <strong>Sortie:</strong> A {% if is_js %}<span>booléen</span> <span>(boolean)</span>{% else %} bool{% endif %}.
+</p>
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>Exemples:</strong>
+    </p>
+    <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+

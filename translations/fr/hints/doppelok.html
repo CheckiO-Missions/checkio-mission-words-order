@@ -1,0 +1,150 @@
+<body data-author="Doppelok">
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Je ne sais pas comment commencer à résoudre cette mission.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+           Vous devez faire correspondre chaque mot de la chaîne à un mot de la liste <b class="code">words</b>. S'il y en a un, retenez-le et, à la fin, comparez les mots de la chaîne avec ceux de la liste. 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            J'ai besoin d'aide pour poursuivre la mission.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Il vous sera utile de lire des informations sur: <a target="_blank" href='https://docs.python.org/3.10/library/stdtypes.html?highlight=index#str.index'>str.index()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_string_index.asp'>example</a>), <a target="_blank" href='https://docs.python.org/3.10/library/functions.html?highlight=sorted#sorted'>sorted()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_func_sorted.asp'>example</a>), et <a target="_blank" href='https://docs.python.org/3.10/library/stdtypes.html?highlight=str%20split#str.split'>str.split()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_string_split.asp'>example</a>).
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Besoin d'aide!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Comme algorithme qui trouvera les mots nécessaires et les stockera, je suggère d'utiliser un générateur d'ensembles. Il nous aidera à contourner le problème de la répétition d'un mot dans une ligne.
+        </p>
+        <pre class="brush: python">
+text = "hi world im here hi world world im here"
+result = {i for i in text.split()}
+print(result)
+        </pre>
+        <div class="output">
+            <p>Résultat:</p>
+            <pre>
+{'im', 'hi', 'world', 'here'}        
+            </pre>
+        </div>
+        <p>
+            Bien que tous les mots apparaissent plus d'une fois dans une chaîne, notre résultat contient une instance de chaque mot. Mais attention, l'ensemble n'est pas un type de données ordonné.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Je suis bloqué. J'ai besoin d'un petit conseil.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Vous pouvez ajouter une condition <b class="code">if</b> à l'intérieur de l'expression du générateur d'ensembles. Ainsi, seuls les éléments qui satisfont à l'expression de la condition <b class="code">if</b> seront ajoutés au résultat du générateur. Dans notre condition <b class="code">if</b>, nous ajouterons une vérification de l'occurrence d'un mot de la chaîne dans la liste de mots.
+        </p>
+        <pre class="brush: python">
+text = "hi world im here hi world world im here"
+words = ["world", "here"]
+result = {i for i in text.split() if i in words}
+print(result)
+        </pre>
+        <div class="output">
+            <p>Résultat:</p>
+            <pre>
+{'world', 'here'}        
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Rien ne fonctionne. SOS
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Il ne nous reste plus qu'à vérifier si les mots que nous avons reçus par le générateur de jeux sont dans le même ordre que dans la liste de mots. La fonction <b class="code">sorted()</b> et la méthode <b class="code">str.index()</b> vont nous aider. La méthode <b class="code">str.index()</b> renvoie l'index du premier élément correspondant à l'élément donné entre parenthèses. Mais nous utiliserons cette méthode comme valeur de l'argument <b class="code">key</b> dans la fonction <b class="code"> sorted()</b>. Regardez bien =)
+        </p>
+        <pre class="brush: python">
+text = "hi world im here hi world world im here"
+words = ["world", "here"]
+result = {i for i in text.split() if i in words}
+print(sorted(result, key=text.index))
+        </pre>
+        <div class="output">
+            <p>Résultat:</p>
+            <pre>
+['world', 'here']        
+            </pre>
+        </div>
+        <p>
+            La fonction <b class="code">sorted()</b> a transformé notre ensemble en liste et l'a trié par <b class="code">text.index('world')... text.index('here')</b>. En d'autres termes, la sortie est une liste avec l'ordre des mots, comme dans la ligne spécifiée. Nous avons ainsi résolu le problème du type de données des ensembles non ordonnés.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Je ne veux pas abandonner, aidez-moi!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Tout ce que vous avez à faire est d'envelopper tout le code dans une expression de fonction. Et à la sortie de la fonction, renvoyez la valeur de la comparaison entre la liste triée et la liste de mots.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def words_order(text: str, words: list) -> bool:
+
+    result = {i for i in text.split() if i in words}
+
+    return sorted(result, key=text.index) == words
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Je veux être le meilleur des meilleurs PROGRAMMEURS!!! MONTREZ-MOI PLUS DE SOLUTIONS!!1!!!11!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            D'accord, d'accord! C'est l'esprit!=) Voici un exemple de solution par le biais de la boucle <b class="code">for</b>. La logique est très similaire à notre solution, mais au lieu de l'ensemble, nous vérifions si notre liste <b class="code">text_new</b> contient des mots spécifiques ou non.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def words_order(text: str, words: list) -> bool:
+
+    if len(set(words)) < len(words):
+        return False
+    text_new = []
+    for i in text.split():
+        if i in words and i not in text_new:
+            text_new.append(i)
+            
+    return text_new == words
+        </pre>
+        </div>
+    </div>
+</div>
+</body>
