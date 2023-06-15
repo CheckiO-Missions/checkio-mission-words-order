@@ -1,21 +1,21 @@
 <!-- Describe task in general -->
 <p>
-    You have a text and {% if is_js %}an <span translate="repeat">array</span>{% else %}a <span translate="repeat">list</span>{% endif %} of words. You need to check if the words in {% if is_js %}an <span translate="repeat">array</span>{% else %}a <span translate="repeat">list</span>{% endif %} appear in the same order as in the given text.
+    You have a text and a sequence of words. You need to check if the words in sequence appear in the same order as in the given text.
 </p>
 <p> Cases you should expect while solving this challenge:</p>
 <ul>
-    <li>a word from the {% if is_js %}<span translate="repeat">array</span>{% else %}<span translate="repeat">list</span>{% endif %} is not in the text - your function should return <b class="code">{% if is_js %}f{% else %}F{% endif %}alse</b>;</li>
+    <li>a word from the sequence is not in the text - your function should return <b class="code">{% if is_js %}f{% else %}F{% endif %}alse</b>;</li>
     <li>any word can appear more than once in a text - use only the first one;</li>
-    <li>two words in the given {% if is_js %}<span translate="repeat">array</span>{% else %}<span translate="repeat">list</span>{% endif %} are the same - your function should return <b class="code">{% if is_js %}f{% else %}F{% endif %}alse</b>;</li>
+    <li>two words in the given sequence are the same - your function should return <b class="code">{% if is_js %}f{% else %}F{% endif %}alse</b>;</li>
     <li>the condition is case sensitive, which means <b class="code">'hi'</b> and <b class="code">'Hi'</b> are two different words;</li>
     <li>the text includes only English letters and spaces.</li>
 </ul>
 <!-- Explain input and output values -->
 <p>
-    <strong>Input:</strong> Two arguments. The first one is a given text, the second is {% if is_js %}an <span translate="repeat">array</span>{% else %}a <span translate="repeat">list</span>{% endif %} of words.
+    <strong>Input:</strong> Two arguments. The first one is a given text as a string <span translate="no">(str{% if is_js %}ing{% endif %})</span>, the second is <span translate="repeat">{% if is_js %}array{% else %}list{% endif %}</span> of words as strings <span translate="no">(str{% if is_js %}ing{% endif %})</span>.
 </p>
 <p>
-    <strong>Output:</strong> A {% if is_js %}<span translate="repeat">boolean</span>{% else %}<span translate="repeat">bool</span>{% endif %}.
+    <strong>Output:</strong> Logic value <span translate="no">(bool{% if is_js %}ean{% endif %})</span>.
 </p>
 <!-- Give some usage examples -->
 <div class="for_info_only">
