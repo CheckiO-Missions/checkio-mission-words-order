@@ -1,0 +1,147 @@
+<body data-author="Doppelok">
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Nie wiem, jak zacząć rozwiązywać tę misję.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+           Musi Pan dopasować każde słowo z ciągu do słowa z listy <b class="code">words</b>. Jeśli takie istnieje, proszę je zapamiętać, a na koniec porównać słowa z ciągu ze słowami z listy. 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Potrzebuję pomocy, aby kontynuować misję.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Przydatne dla Państwa będzie zapoznanie się z informacjami na temat: <a target="_blank" href='https://docs.python.org/3.10/library/stdtypes.html?highlight=index#str.index'>str.index()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_string_index.asp'>example</a>), <a target="_blank" href='https://docs.python.org/3.10/library/functions.html?highlight=sorted#sorted'>sorted()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_func_sorted.asp'>example</a>), oraz <a target="_blank" href='https://docs.python.org/3.10/library/stdtypes.html?highlight=str%20split#str.split'>str.split()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_string_split.asp'>example</a>).
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Proszę o pomoc!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Jako algorytm, który znajdzie potrzebne słowa i zapisze je, proponuję użyć generatora zestawów. Pomoże nam to ominąć problem powtarzania się słowa w linii.
+        </p>
+        <pre class="brush: python">
+text = "hi world im here hi world world im here"
+result = {i for i in text.split()}
+print(result)
+        </pre>
+        <div class="output">
+            <p>Wyjście:</p>
+            <pre>
+{'im', 'hi', 'world', 'here'}</pre>
+        </div>
+        <p>
+            Chociaż wszystkie słowa występują więcej niż raz w ciągu, nasz wynik zawiera po jednym wystąpieniu każdego słowa. Proszę jednak uważać, zbiór nie jest uporządkowanym typem danych.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Utknąłem. Potrzebuję małej podpowiedzi.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Może Pan dodać warunek <b class="code">if</b> wewnątrz wyrażenia generatora set. Dzięki temu do wyniku generatora zostaną dodane tylko te elementy, które przejdą wyrażenie warunku <b class="code">if</b>. W naszym warunku <b class="code">if</b> dodamy sprawdzenie występowania słowa z łańcucha na liście słów.
+        </p>
+        <pre class="brush: python">
+text = "hi world im here hi world world im here"
+words = ["world", "here"]
+result = {i for i in text.split() if i in words}
+print(result)
+        </pre>
+        <div class="output">
+            <p>Dane wyjściowe:</p>
+            <pre>
+{'world', 'here'}</pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Nic nie działa. SOS
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Musimy tylko sprawdzić, czy słowa otrzymane przez generator zestawów są w tej samej kolejności, co na liście słów. Pomoże nam w tym funkcja <b class="code">sorted()</b> i metoda <b class="code">str.index()</b>. Metoda <b class="code">str.index()</b> zwraca indeks pierwszego elementu, który pasuje do elementu podanego w nawiasie. Użyjemy tej metody jako wartości argumentu <b class="code">key</b> w funkcji <b class="code"> sorted()</b>. Proszę patrzeć uważnie =)
+        </p>
+        <pre class="brush: python">
+text = "hi world im here hi world world im here"
+words = ["world", "here"]
+result = {i for i in text.split() if i in words}
+print(sorted(result, key=text.index))
+        </pre>
+        <div class="output">
+            <p>Wynik:</p>
+            <pre>
+['world', 'here']</pre>
+        </div>
+        <p>
+            Funkcja <b class="code">sorted()</b> przekształciła nasz zbiór w listę i posortowała go według <b class="code">text.index('world')... text.index('here')</b>. Oznacza to, że wynikiem jest lista z kolejnością słów, jak w podanym wierszu. W ten sposób rozwiązaliśmy problem nieuporządkowanego typu danych zbioru.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Nie chcę się poddawać, proszę mi pomóc!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Wszystko, co musi Pan zrobić, to zawinąć cały kod w wyrażenie funkcji. Na wyjściu funkcji proszę zwrócić wartość porównania posortowanej listy i listy słów.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def words_order(text: str, words: list) -> bool:
+
+    result = {i for i in text.split() if i in words}
+
+    return sorted(result, key=text.index) == words
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Chcę być najlepszym z najlepszych PROGRAMISTÓW!!! PROSZĘ POKAZAĆ MI WIĘCEJ ROZWIĄZAŃ!!!1!!!11!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Dobra, dobra! To jest duch!=) Oto przykład rozwiązania za pomocą pętli <b class="code">for</b>. Logika jest bardzo podobna do naszego rozwiązania, ale zamiast zestawu sprawdzamy, czy nasza lista <b class="code">text_new</b> zawiera określone słowa, czy nie.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def words_order(text: str, words: list) -> bool:
+
+    if len(set(words)) < len(words):
+        return False
+    text_new = []
+    for i in text.split():
+        if i in words and i not in text_new:
+            text_new.append(i)
+            
+    return text_new == words
+        </pre>
+        </div>
+    </div>
+</div>
+</body>
