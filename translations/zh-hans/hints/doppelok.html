@@ -1,0 +1,147 @@
+<body data-author="Doppelok">
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我不知道如何开始解决这项任务。
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+           您需要将字符串中的每个单词与<b class="code">words</b> 列表中的单词进行匹配。如果有，就记住它，最后将字符串中的单词与列表中的单词进行比较。 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我需要帮助才能继续完成任务。
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            您可以阅读以下信息：<a target="_blank" href='https://docs.python.org/3.10/library/stdtypes.html?highlight=index#str.index'>str.index()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_string_index.asp'>example</a>),<a target="_blank" href='https://docs.python.org/3.10/library/functions.html?highlight=sorted#sorted'>sorted()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_func_sorted.asp'>example</a>), 和<a target="_blank" href='https://docs.python.org/3.10/library/stdtypes.html?highlight=str%20split#str.split'>str.split()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_string_split.asp'>example</a>).
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            需要帮助！
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            我建议使用一个集合生成器作为算法来查找并存储所需的单词。它将帮助我们绕过一行中单词重复的问题。
+        </p>
+        <pre class="brush: python">
+text = "hi world im here hi world world im here"
+result = {i for i in text.split()}
+print(result)
+        </pre>
+        <div class="output">
+            <p>输出：</p>
+            <pre>
+{'im', 'hi', 'world', 'here'}</pre>
+        </div>
+        <p>
+            尽管所有单词在字符串中都不止出现一次，但我们的结果包含了每个单词的一个实例。但是要注意，集合不是有序数据类型。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我卡住了。我需要一点提示。
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            您可以在集合生成器表达式中添加<b class="code">if</b> 条件。因此，只有那些通过<b class="code">if</b> 条件表达式的元素才会被添加到生成器结果中。在我们的<b class="code">if</b> 条件中，我们将在单词列表中添加对字符串中单词出现的检查。
+        </p>
+        <pre class="brush: python">
+text = "hi world im here hi world world im here"
+words = ["world", "here"]
+result = {i for i in text.split() if i in words}
+print(result)
+        </pre>
+        <div class="output">
+            <p>输出：</p>
+            <pre>
+{'world', 'here'}</pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            没有任何结果。求救
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            我们所要做的就是检查通过集合生成器得到的单词是否与单词表中的顺序一致。<b class="code">sorted()</b> 函数和<b class="code">str.index()</b> 方法将帮助我们。<b class="code">str.index()</b> 方法返回与括号中给定元素匹配的第一个元素的索引。但我们将使用该方法作为<b class="code"> sorted()</b> 函数中<b class="code">key</b> 参数的值。仔细看 =)
+        </p>
+        <pre class="brush: python">
+text = "hi world im here hi world world im here"
+words = ["world", "here"]
+result = {i for i in text.split() if i in words}
+print(sorted(result, key=text.index))
+        </pre>
+        <div class="output">
+            <p>输出：</p>
+            <pre>
+['world', 'here']</pre>
+        </div>
+        <p>
+            <b class="code">sorted()</b> 函数将我们的集合转换成了一个列表，并按照<b class="code">text.index('world')... text.index('here')</b> 进行了排序。也就是说，输出是一个按指定行中的单词顺序排列的列表。因此，我们解决了无序集合数据类型的问题。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我不想放弃，帮帮我！
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            您只需将所有代码封装在一个函数表达式中。在函数的输出端，返回排序列表和单词列表的比较值。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def words_order(text: str, words: list) -> bool:
+
+    result = {i for i in text.split() if i in words}
+
+    return sorted(result, key=text.index) == words
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我想成为最好的程序员中的最好的程序员!!!!!!!!!!!!告诉我更多的解决方案!!!1!!!11！
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            好的，好的！这就是精神！=)下面是一个通过<b class="code">for</b> 循环求解的例子。其逻辑与我们的解决方案非常相似，但我们检查的不是集合，而是我们的<b class="code">text_new</b> 列表是否包含特定的单词。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def words_order(text: str, words: list) -> bool:
+
+    if len(set(words)) < len(words):
+        return False
+    text_new = []
+    for i in text.split():
+        if i in words and i not in text_new:
+            text_new.append(i)
+            
+    return text_new == words
+        </pre>
+        </div>
+    </div>
+</div>
+</body>
