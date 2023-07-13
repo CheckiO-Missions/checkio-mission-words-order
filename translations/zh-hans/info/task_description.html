@@ -1,0 +1,28 @@
+<!-- Describe task in general -->
+<p>
+    您有一段文字和一串单词。您需要检查单词序列是否与给定文本中的顺序相同。
+</p>
+<p>在解决这个问题时，您可能会遇到以下情况</p>
+<ul>
+    <li>序列中的某个单词不在文本中 - 您的函数应返回 <b class="code">{% if is_js %}f{% else %}F{% endif %}alse</b>;</li>
+    <li>任何单词在文本中都可能出现不止一次 - 只使用第一个单词；</li>
+    <li>给定序列中的两个单词相同 - 您的函数应返回 <b class="code">{% if is_js %}f{% else %}F{% endif %}alse</b>;</li>
+    <li>条件区分大小写，这意味着<b class="code">'hi'</b> 和<b class="code">'Hi'</b> 是两个不同的单词；</li>
+    <li>文本只包含英文字母和空格。</li>
+</ul>
+<!-- Explain input and output values -->
+<p>
+   <strong>输入</strong>两个参数。第一个参数是给定的文本字符串 <span>(str{% if is_js %}ing{% endif %})</span>第二个参数是{% if is_js %}数组{% else %}列表{% endif %} <span>({% if is_js %}array{% else %}list{% endif %})</span>字符串 <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+<p>
+   <strong>输出：</strong>逻辑值 <span>(bool{% if is_js %}ean{% endif %})</span>.
+</p>
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>示例</strong>
+    </p>
+    <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+
