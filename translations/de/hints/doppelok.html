@@ -1,0 +1,147 @@
+<body data-author="Doppelok">
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ich weiß nicht, wie ich mit der Lösung dieser Aufgabe beginnen soll.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+           Sie müssen jedes Wort der Zeichenkette mit einem Wort aus der Liste <b class="code">words</b> vergleichen. Wenn es eines gibt, dann merken Sie es sich und vergleichen Sie am Ende einfach die Wörter aus der Zeichenkette mit den Wörtern aus der Liste. 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ich brauche Hilfe, um die Mission fortzusetzen.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Es wird nützlich für Sie sein, einige Informationen zu lesen: <a target="_blank" href='https://docs.python.org/3.10/library/stdtypes.html?highlight=index#str.index'>str.index()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_string_index.asp'>example</a>), <a target="_blank" href='https://docs.python.org/3.10/library/functions.html?highlight=sorted#sorted'>sorted()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_func_sorted.asp'>example</a>), und <a target="_blank" href='https://docs.python.org/3.10/library/stdtypes.html?highlight=str%20split#str.split'>str.split()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_string_split.asp'>example</a>).
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Sie brauchen Hilfe!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Als Algorithmus, der die notwendigen Wörter findet und speichert, schlage ich einen Mengengenerator vor. Damit umgehen wir das Problem der Wiederholung eines Wortes in einer Zeile.
+        </p>
+        <pre class="brush: python">
+text = "hi world im here hi world world im here"
+result = {i for i in text.split()}
+print(result)
+        </pre>
+        <div class="output">
+            <p>Ausgabe:</p>
+            <pre>
+{'im', 'hi', 'world', 'here'}</pre>
+        </div>
+        <p>
+            Obwohl alle Wörter mehr als einmal in einer Zeichenkette vorkommen, enthält unser Ergebnis eine Instanz jedes Wortes. Aber seien Sie vorsichtig, die Menge ist kein geordneter Datentyp.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ich hänge fest. Ich brauche einen kleinen Hinweis.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Sie können eine <b class="code">if</b> Bedingung in den Ausdruck des Set-Generators einfügen. Daher werden nur die Elemente, die den Ausdruck der <b class="code">if</b> Bedingung erfüllen, zum Ergebnis des Generators hinzugefügt. In unserer <b class="code">if</b> Bedingung fügen wir eine Prüfung auf das Vorkommen eines Wortes aus der Zeichenkette in der Liste der Wörter hinzu.
+        </p>
+        <pre class="brush: python">
+text = "hi world im here hi world world im here"
+words = ["world", "here"]
+result = {i for i in text.split() if i in words}
+print(result)
+        </pre>
+        <div class="output">
+            <p>Ausgabe:</p>
+            <pre>
+{'world', 'here'}</pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Nichts funktioniert. SOS
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Wir müssen nur noch überprüfen, ob die Wörter, die wir mit dem Mengengenerator erhalten haben, in der gleichen Reihenfolge stehen wie in der Wortliste. Die Funktion <b class="code">sorted()</b> und die Methode <b class="code">str.index()</b> werden uns dabei helfen. Die Methode <b class="code">str.index()</b> gibt den Index des ersten Elements zurück, das mit dem angegebenen Element in den Klammern übereinstimmt. Aber wir werden diese Methode als Wert des Arguments <b class="code">key</b> in der Funktion <b class="code"> sorted()</b> verwenden. Schauen Sie genau hin =)
+        </p>
+        <pre class="brush: python">
+text = "hi world im here hi world world im here"
+words = ["world", "here"]
+result = {i for i in text.split() if i in words}
+print(sorted(result, key=text.index))
+        </pre>
+        <div class="output">
+            <p>Ausgabe:</p>
+            <pre>
+['world', 'here']</pre>
+        </div>
+        <p>
+            Die Funktion <b class="code">sorted()</b> hat unsere Menge in eine Liste umgewandelt und sie nach <b class="code">text.index('world')... text.index('here')</b> sortiert. Das heißt, die Ausgabe ist eine Liste mit der Reihenfolge der Wörter, wie in der angegebenen Zeile. Damit haben wir das Problem des ungeordneten Datentyps der Menge gelöst.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ich will nicht aufgeben, Hilfe!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Alles, was Sie tun müssen, ist, den gesamten Code in einen Funktionsausdruck zu verpacken. Und bei der Ausgabe der Funktion geben Sie den Wert des Vergleichs zwischen der sortierten Liste und der Liste der Wörter zurück.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def words_order(text: str, words: list) -> bool:
+
+    result = {i for i in text.split() if i in words}
+
+    return sorted(result, key=text.index) == words
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ich möchte der beste der besten PROGRAMMIERER werden!!! ZEIGEN SIE MIR MEHR LÖSUNGEN!!!1!!!11!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Okay, okay! Das ist die richtige Einstellung!=) Hier ist ein Beispiel für eine Lösung durch die <b class="code">for</b> Schleife. Die Logik ist unserer Lösung sehr ähnlich, aber anstelle der Menge prüfen wir, ob unsere <b class="code">text_new</b> Liste bestimmte Wörter enthält oder nicht.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def words_order(text: str, words: list) -> bool:
+
+    if len(set(words)) < len(words):
+        return False
+    text_new = []
+    for i in text.split():
+        if i in words and i not in text_new:
+            text_new.append(i)
+            
+    return text_new == words
+        </pre>
+        </div>
+    </div>
+</div>
+</body>
