@@ -2,6 +2,11 @@
 <p>
     Vous avez un texte et {% if is_js %}un <span>tableau</span> <span>(array)</span>{% else %}une <span>liste</span> <span>(list)</span>{% endif %} de mots. Vous devez vérifier si les mots dans {% if is_js %}un <span>tableau</span> <span>(array)</span>{% else %} une <span>liste</span> <span>(list)</span>{% endif %} apparaissent dans le même ordre que dans le texte donné.
 </p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}words-order.svg" alt="example" style="max-height: 200px"/>
+</p>
+
 <p> Voici les cas auxquels vous devez vous attendre pour résoudre ce défi:</p>
 <ul>
     <li>un mot du {% if is_js %}<span>tableau</span> <span>(array)</span>{% else %}<span>liste</span> <span>(list)</span>{% endif %} n'est pas dans le texte - votre fonction doit retourner <b class="code">{% if is_js %}f{% else %}F{% endif %}alse</b>;</li>
