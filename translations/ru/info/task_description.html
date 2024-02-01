@@ -1,0 +1,33 @@
+<!-- Describe task in general -->
+<p>
+    У вас есть текст и последовательность слов. Вам нужно проверить, появляются ли слова в последовательности в том же порядке, что и в данном тексте.
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}words-order.svg" alt="example" style="max-height: 200px"/>
+</p>
+
+<p> Задачи, которые вы должны решить при решении этой задачи:</p>
+<ul>
+    <li>слово из последовательности отсутствует в тексте - ваша функция должна вернуть <b class="code">{% if is_js %}f{% else %}F{% endif %}alse</b>;</li>
+    <li>любое слово может встречаться в тексте более одного раза - используйте только первое;</li>
+    <li>два слова в заданной последовательности одинаковы - ваша функция должна вернуть <b class="code">{% if is_js %}f{% else %}F{% endif %}alse</b>;</li>
+    <li>условие чувствительно к регистру, что означает <b class="code">'hi'</b> и <b class="code">'Hi'</b> это два разных слова;</li>
+    <li>текст включает только английские буквы и пробелы.</li>
+</ul>
+<!-- Explain input and output values -->
+<p>
+    <strong>Ввод:</strong> Два аргумента. Первый - заданный текст в виде строки <span translate="no">(str{% if is_js %}ing{% endif %})</span>, второй -  список элементов <span translate="repeat">{% if is_js %}array{% else %}list{% endif %}</span> в виде строк <span translate="no">(str{% if is_js %}ing{% endif %})</span>.
+</p>
+<p>
+    <strong>Вывод:</strong> Логическое значение <span translate="no">(bool{% if is_js %}ean{% endif %})</span>.
+</p>
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>Примеры:</strong>
+    </p>
+    <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+

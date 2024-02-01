@@ -1,0 +1,147 @@
+<body data-author="Doppelok">
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Я не знаю с чего начать решение этой задачи.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+           Вам нужно сопоставить каждое слово из строки со словом из списка <b class="code">words</b>. Если оно присутствует, то запомнить его, а в конце просто сравнить слова, взятые из строки, со словами из списка.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Мне нужна помощь для продолжения миссии.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Вам будет полезно прочитать некоторые сведения о: <a target="_blank" href='https://docs.python.org/3.10/library/stdtypes.html?highlight=index#str.index'>str.index()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_string_index.asp'>example</a>), <a target="_blank" href='https://docs.python.org/3.10/library/functions.html?highlight=sorted#sorted'>sorted()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_func_sorted.asp'>example</a>), and <a target="_blank" href='https://docs.python.org/3.10/library/stdtypes.html?highlight=str%20split#str.split'>str.split()</a> (<a target="_blank" href='https://www.w3schools.com/python/ref_string_split.asp'>example</a>).
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Мне нужна помощь!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            В качестве алгоритма, который будет находить нужные слова и сохранять их, я предлагаю использовать генератор множеств. Он поможет нам обойти проблему повторения слова в строке.
+        </p>
+        <pre class="brush: python">
+text = "hi world im here hi world world im here"
+result = {i for i in text.split()}
+print(result)
+        </pre>
+        <div class="output">
+            <p>Вывод:</p>
+            <pre>
+{'im', 'hi', 'world', 'here'}</pre>
+        </div>
+        <p>
+            Хотя все слова встречаются в строке более одного раза, наш результат содержит по одному экземпляру каждого слова. Но будьте осторожны, множество - это не упорядоченный тип данных.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Я застрял. Мне нужна небольшая подсказка.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Вы можете добавить оператор <b class="code">if</b> в выражение генератора. Таким образом в выражение генератора будут добавлены только те элементы, которые удовлетворяют выражению <b class="code">if</b>. В нашем условии <b class="code">if</b> мы добавим проверку на вхождение слова из строки в список слов words.
+        </p>
+        <pre class="brush: python">
+text = "hi world im here hi world world im here"
+words = ["world", "here"]
+result = {i for i in text.split() if i in words}
+print(result)
+        </pre>
+        <div class="output">
+            <p>Вывод:</p>
+            <pre>
+{'world', 'here'}</pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ничего не работает. SOS
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Все, что нам нужно сделать - это проверить, находятся ли слова, полученные генератором множества, в том же порядке, что и в списке words. Функция <b class="code">sorted()</b> и метод <b class="code">str.index()</b> могут помочь Вам. Метод <b class="code">str.index()</b> возвращает индекс первого элемента, значение которого совпадает с заданным элементов в скобках. Но мы будем использовать этот метод в качестве значения аргумента <b class="code">key</b> в функции <b class="code"> sorted()</b>. Смотрите внимательно =)
+        </p>
+        <pre class="brush: python">
+text = "hi world im here hi world world im here"
+words = ["world", "here"]
+result = {i for i in text.split() if i in words}
+print(sorted(result, key=text.index))
+        </pre>
+        <div class="output">
+            <p>Вывод:</p>
+            <pre>
+['world', 'here']</pre>
+        </div>
+        <p>
+            Функция <b class="code">sorted()</b> превратила наше множество в список и отсортировала его по <b class="code">text.index('world')... text.index('here')</b>. То есть на выходе получился список с порядком слов, как в указанной строке. Таким образом, мы решили проблему неупорядоченного типа данных - множества.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Я не хочу сдаваться, помогите!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Все, что вам нужно сделать, это обернуть весь код в выражение функции. А на выходе функции вернуть результат сравнения отсортированного списка и списка слов.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def words_order(text: str, words: list) -> bool:
+
+    result = {i for i in text.split() if i in words}
+
+    return sorted(result, key=text.index) == words
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Я хочу быть лучшим из лучших ПРОГРАММИСТОВ!!! ПОКАЖИТЕ МНЕ БОЛЬШЕ РЕШЕНИЙ!!!1!!!11!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Хорошо, хорошо! Вот это дух!=) Вот пример решения с помощью цикла <b class="code">for</b>. Логика очень похожа на наше решение, но вместо множества мы проверяем, содержит ли наш список <b class="code">text_new</b> определенные слова или нет.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def words_order(text: str, words: list) -> bool:
+
+    if len(set(words)) < len(words):
+        return False
+    text_new = []
+    for i in text.split():
+        if i in words and i not in text_new:
+            text_new.append(i)
+            
+    return text_new == words
+        </pre>
+        </div>
+    </div>
+</div>
+</body>
